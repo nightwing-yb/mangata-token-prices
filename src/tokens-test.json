@@ -1,0 +1,23 @@
+[
+  {
+    "id": "0",
+    "decimals": 18,
+    "name": "Mangata",
+    "symbol": "MGX",
+    "priceSource": ["liquidity-5-4", "usd-ksm"]
+  },
+  {
+    "id": "4",
+    "decimals": 12,
+    "name": "Kusama",
+    "symbol": "KSM",
+    "priceSource": ["usd-ksm"]
+  },
+  {
+    "id": "16",
+    "decimals": 12,
+    "name": "Voucher Slot KSM",
+    "symbol": "vsKSM",
+    "priceSource": ["liquidity-19-4", "usd-ksm"]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "name": "mangata-tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mangata-finance/sdk": "^1.11.7",
+    "axios": "^1.2.3"
+  }
+}
