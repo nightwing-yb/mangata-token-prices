@@ -51,6 +51,7 @@ export async function calculatePriceInTarget(
     buyPriceArgs[1],
     buyPriceArgs[2]
   );
+
   return buyPrice;
 }
 

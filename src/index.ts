@@ -3,6 +3,7 @@ import {
   fetchKSMPrice,
   calculatePriceInTarget,
   decimalsToAmount,
+  getAssets,
 } from "./utils";
 
 import Tokens from "./tokens.json";
@@ -19,6 +20,7 @@ async function main() {
   tokenPrices.set("ksm", await fetchKSMPrice());
 
   for (let token of Tokens) {
+    console.log("------------");
     console.log("Calculating for", token.symbol);
     const sources = token.priceSource;
     let price = 1;
@@ -45,13 +47,30 @@ async function main() {
         const targetOne = decimalsToAmount(1, targetDecimals);
 
         let priceInTargetNormalised;
-        if (priceInTarget.gt(new BN(targetOne.toString()))) {
+        // if (priceInTarget.gt(new BN(targetOne.toString()))) {
+        //   console.log(`--- priceInTarget: ${priceInTarget}`);
+        //   console.log(`--- target1Decimal: ${targetOne}`);
+        //   console.log(
+        //     `--- priceInTarget / target1Decimal: ${priceInTarget
+        //       .div(new BN((10 ** targetDecimals).toString()))
+        //       .toNumber()}`
+        //   );
+        // priceInTargetNormalised = priceInTarget
+        //   .div(new BN(targetOne.toString()))
+        //   .toNumber();
+        // } else {
+        //   priceInTargetNormalised = priceInTarget.toNumber() / targetOne;
+        // }
+
+        if (priceInTarget.gte(new BN(Number.MAX_SAFE_INTEGER.toString()))) {
           priceInTargetNormalised = priceInTarget
-            .div(new BN((10 ** targetDecimals).toString()))
+            .div(new BN(targetOne.toString()))
             .toNumber();
         } else {
           priceInTargetNormalised = priceInTarget.toNumber() / targetOne;
         }
+
+        console.log(`priceInTarget: ${priceInTargetNormalised}`);
 
         price *= priceInTargetNormalised;
       } else if (sources[i].includes("usd")) {
