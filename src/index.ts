@@ -47,20 +47,6 @@ async function main() {
         const targetOne = decimalsToAmount(1, targetDecimals);
 
         let priceInTargetNormalised;
-        // if (priceInTarget.gt(new BN(targetOne.toString()))) {
-        //   console.log(`--- priceInTarget: ${priceInTarget}`);
-        //   console.log(`--- target1Decimal: ${targetOne}`);
-        //   console.log(
-        //     `--- priceInTarget / target1Decimal: ${priceInTarget
-        //       .div(new BN((10 ** targetDecimals).toString()))
-        //       .toNumber()}`
-        //   );
-        // priceInTargetNormalised = priceInTarget
-        //   .div(new BN(targetOne.toString()))
-        //   .toNumber();
-        // } else {
-        //   priceInTargetNormalised = priceInTarget.toNumber() / targetOne;
-        // }
 
         if (priceInTarget.gte(new BN(Number.MAX_SAFE_INTEGER.toString()))) {
           priceInTargetNormalised = priceInTarget
@@ -69,8 +55,6 @@ async function main() {
         } else {
           priceInTargetNormalised = priceInTarget.toNumber() / targetOne;
         }
-
-        console.log(`priceInTarget: ${priceInTargetNormalised}`);
 
         price *= priceInTargetNormalised;
       } else if (sources[i].includes("usd")) {
